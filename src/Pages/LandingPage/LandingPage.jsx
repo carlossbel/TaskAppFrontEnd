@@ -89,7 +89,7 @@ const LandingPage = () => {
                   boxShadow: '0 6px 20px rgba(0,0,0,0.1)',
                   border: 'none'
                 }}
-                bodyStyle={{ padding: '30px' }}
+                styles={{ padding: '30px' }}
               >
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ marginBottom: '16px' }}>

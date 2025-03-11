@@ -14,21 +14,9 @@ const api = axios.create({
 // Request interceptor
 api.interceptors.request.use(
   (config) => {
-    // Obtener usuario completo desde localStorage
-    const userStr = localStorage.getItem('user');
-    let token = null;
-    
-    if (userStr) {
-      try {
-        const user = JSON.parse(userStr);
-        token = user.token;
-      } catch (e) {
-        console.error('Error parsing user from localStorage', e);
-      }
-    }
-    
-    if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user && user.token) {
+      config.headers['Authorization'] = `Bearer ${user.token}`;
     }
     return config;
   },
@@ -49,7 +37,7 @@ api.interceptors.response.use(
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       
-      // Clear user data and redirect to login
+      // Clear local storage and redirect to login
       localStorage.removeItem('user');
       
       window.location.href = '/login';

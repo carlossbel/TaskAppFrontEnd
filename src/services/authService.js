@@ -1,7 +1,6 @@
 // src/services/authService.js
 import axios from 'axios';
-
-const API_URL = "https://taskappbackend-gywh.onrender.com/api";
+import API_BASE_URL from '../config/api';
 
 // Configura axios con encabezados predeterminados
 const axiosInstance = axios.create({
@@ -14,7 +13,7 @@ const axiosInstance = axios.create({
 const AuthService = {
   login: async (email, password) => {
     try {
-      const response = await axiosInstance.post(`${API_URL}/login`, { email, password });
+      const response = await axiosInstance.post(`${API_BASE_URL}/login`, { email, password });
       
       if (response.data.token) {
         localStorage.setItem('user', JSON.stringify(response.data));
@@ -33,7 +32,7 @@ const AuthService = {
 
   register: async (username, email, password) => {
     try {
-      const response = await axiosInstance.post(`${API_URL}/register`, { username, email, password });
+      const response = await axiosInstance.post(`${API_BASE_URL}/register`, { username, email, password });
       return response.data;
     } catch (error) {
       console.error('Register error:', error);

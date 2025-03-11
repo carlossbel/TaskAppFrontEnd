@@ -1,26 +1,19 @@
-// src/App.js
+// src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import LoginPage from './pages/LoginPage/LoginPage';
-import RegisterPage from './pages/RegisterPage/RegisterPage';
-import LandingPage from './pages/LandingPage/LandingPage';
-import DashboardPage from './pages/Dashboard/DashboardPage';
-import AdminDashboardPage from './pages/AdminDashboard/AdminDashboardPage';
-import UserManagementPage from './pages/UserManagement/UserManagementPage';
-import AdminGroupsPage from './pages/AdminGroups/AdminGroupsPage';
-import AdminTasksPage from './pages/AdminTasks/AdminTasksPage';
-import MainLayout from './layouts/MainLayout';
-import AdminLayout from './layouts/AdminLayout';
 import ProtectedRoute from './routes/ProtectedRoute';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
-import AuthService from './services/authService';
+import LandingPage from './Pages/LandingPage/LandingPage';
+import LoginPage from './Pages/LoginPage/LoginPage';
+import RegisterPage from './Pages/RegisterPage/RegisterPage';
+import DashboardPage from './Pages/Dashboard/Dashboardpage';
+import UserManagementPage from './Pages/UserManagement/UserManagementPage';
+import AdminDashboardPage from './Pages/AdminDashboard/AdminDashboardPage';
+import AdminTasksPage from './Pages/AdminTasks/AdminTasksPage';
+import AdminGroupsPage from './Pages/AdminGroups/AdminGroupsPage';
+import MainLayout from './Layouts/MainLayout';
+import AdminLayout from './Layouts/AdminLayout';
 
 function App() {
-  // Verificar si el usuario está autenticado
-  const isAuthenticated = AuthService.isAuthenticated();
-  const isAdmin = AuthService.isAdmin();
-
   return (
     <Router>
       <Routes>
@@ -29,14 +22,16 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         
-        {/* User Dashboard Routes */}
+        {/* Regular User Routes */}
         <Route path="/dashboard" element={
           <ProtectedRoute>
             <MainLayout />
           </ProtectedRoute>
         }>
           <Route index element={<DashboardPage />} />
-          <Route path="profile" element={<ProfilePage />} />
+          <Route path="tasks" element={<DashboardPage />} />
+          <Route path="groups" element={<DashboardPage />} />
+          <Route path="profile" element={<div>Perfil de Usuario (Por implementar)</div>} />
         </Route>
         
         {/* Admin Routes */}
@@ -45,14 +40,16 @@ function App() {
             <AdminLayout />
           </ProtectedRoute>
         }>
+          <Route index element={<Navigate to="/admin/dashboard" replace />} />
           <Route path="dashboard" element={<AdminDashboardPage />} />
           <Route path="users" element={<UserManagementPage />} />
-          <Route path="groups" element={<AdminGroupsPage />} />
           <Route path="tasks" element={<AdminTasksPage />} />
+          <Route path="groups" element={<AdminGroupsPage />} />
+          <Route path="settings" element={<div>Configuración (Por implementar)</div>} />
         </Route>
         
-        {/* Not Found Route */}
-        <Route path="*" element={<NotFoundPage />} />
+        {/* Fallback for unknown routes */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
