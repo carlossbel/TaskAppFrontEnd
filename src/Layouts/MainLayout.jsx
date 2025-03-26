@@ -36,25 +36,11 @@ const MainLayout = () => {
     const path = location.pathname;
     if (path.includes('/dashboard/tasks')) return '1';
     if (path.includes('/dashboard/groups')) return '2';
-    if (path.includes('/dashboard/profile')) return '3';
     return '1'; // default to dashboard
   };
 
   // Configuración del menú del usuario
   const userMenuItems = [
-    {
-      key: '1',
-      icon: <UserOutlined />,
-      label: <Link to="/dashboard/profile">Mi Perfil</Link>,
-    },
-    {
-      key: '2',
-      icon: <SettingOutlined />,
-      label: <Link to="/dashboard/settings">Configuración</Link>,
-    },
-    {
-      type: 'divider',
-    },
     {
       key: '3',
       icon: <LogoutOutlined />,
