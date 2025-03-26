@@ -210,6 +210,11 @@ const DashboardPage = () => {
             onTaskUpdated={fetchData}
             showEditModal={showEditTaskModal}
           />
+          {
+            key: 'groups',
+            label: 'Mis Grupos',
+            children: renderGroupCards()
+          }
         </>
       )
     },
