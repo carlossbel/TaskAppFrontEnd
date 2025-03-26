@@ -56,11 +56,6 @@ const MainLayout = () => {
       icon: <CalendarOutlined />,
       label: <Link to="/dashboard">Mis Tareas</Link>,
     },
-    {
-      key: '3',
-      icon: <UserOutlined />,
-      label: <Link to="/dashboard/profile">Mi Perfil</Link>,
-    },
   ];
 
   return (
