@@ -213,11 +213,6 @@ const DashboardPage = () => {
         </>
       )
     },
-    {
-      key: 'groups',
-      label: 'Mis Grupos',
-      children: renderGroupCards()
-    }
   ];
 
   // Main content
