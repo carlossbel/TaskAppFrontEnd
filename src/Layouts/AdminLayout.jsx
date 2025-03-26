@@ -39,17 +39,11 @@ const AdminLayout = () => {
     if (path.includes('/admin/users')) return '2';
     if (path.includes('/admin/tasks')) return '3';
     if (path.includes('/admin/groups')) return '4';
-    if (path.includes('/admin/settings')) return '5';
     return '1'; // default to dashboard
   };
 
   // Configuración del menú del usuario administrador
   const userMenuItems = [
-    {
-      key: '1',
-      icon: <SettingOutlined />,
-      label: <Link to="/admin/settings">Configuración</Link>,
-    },
     {
       type: 'divider',
     },
@@ -82,11 +76,6 @@ const AdminLayout = () => {
       key: '4',
       icon: <TeamOutlined />,
       label: <Link to="/admin/groups">Grupos</Link>,
-    },
-    {
-      key: '5',
-      icon: <SettingOutlined />,
-      label: <Link to="/admin/settings">Configuración</Link>,
     },
   ];
 
