@@ -1,4 +1,3 @@
-// src/pages/Dashboard/DashboardPage.jsx
 import React, { useState, useEffect, useCallback } from "react";
 import { 
   FloatButton, 
@@ -210,14 +209,14 @@ const DashboardPage = () => {
             onTaskUpdated={fetchData}
             showEditModal={showEditTaskModal}
           />
-          {
-            key: 'groups',
-            label: 'Mis Grupos',
-            children: renderGroupCards()
-          }
         </>
       )
     },
+    {
+      key: 'groups',
+      label: 'Mis Grupos',
+      children: renderGroupCards()
+    }
   ];
 
   // Main content
