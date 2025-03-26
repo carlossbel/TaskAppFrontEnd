@@ -31,7 +31,6 @@ function App() {
           <Route index element={<DashboardPage />} />
           <Route path="tasks" element={<DashboardPage />} />
           <Route path="groups" element={<DashboardPage />} />
-          <Route path="profile" element={<div>Perfil de Usuario (Por implementar)</div>} />
         </Route>
         
         {/* Admin Routes */}
@@ -45,7 +44,6 @@ function App() {
           <Route path="users" element={<UserManagementPage />} />
           <Route path="tasks" element={<AdminTasksPage />} />
           <Route path="groups" element={<AdminGroupsPage />} />
-          <Route path="settings" element={<div>Configuración (Por implementar)</div>} />
         </Route>
         
         {/* Fallback for unknown routes */}
