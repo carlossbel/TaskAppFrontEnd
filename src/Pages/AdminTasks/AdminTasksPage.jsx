@@ -295,13 +295,6 @@ const AdminTasksPage = () => {
         <Title level={2}>Gestión de Tareas</Title>
         <Space>
           <Button 
-            type="primary" 
-            icon={<PlusOutlined />} 
-            onClick={showCreateModal}
-          >
-            Nueva Tarea
-          </Button>
-          <Button 
             icon={<ReloadOutlined />} 
             onClick={fetchData}
             loading={loading}
