@@ -1,10 +1,9 @@
-// src/components/GroupCard/GroupCard.jsx
 import React from "react";
 import { Card, Button, Avatar, Tooltip } from "antd";
-import { TeamOutlined, PlusOutlined, EyeOutlined, EditOutlined } from "@ant-design/icons";
+import { TeamOutlined, PlusOutlined, EditOutlined } from "@ant-design/icons";
 import AuthService from "../../services/authService";
 
-const GroupCard = ({ group, onCreateGroupTask, onViewGroupTasks, onEditGroup }) => {
+const GroupCard = ({ group, onCreateGroupTask, onEditGroup }) => {
   // Verificación exhaustiva: si group no es un objeto válido, no renderizamos nada
   if (!group || typeof group !== 'object') {
     return null;
@@ -14,27 +13,13 @@ const GroupCard = ({ group, onCreateGroupTask, onViewGroupTasks, onEditGroup }) 
   
   // Verificación segura para el owner
   const isOwner = group && 
-                 group.ownerId && 
-                 currentUser && 
-                 currentUser.userId && 
-                 String(group.ownerId) === String(currentUser.userId);
+                    group.ownerId && 
+                    currentUser && 
+                    currentUser.userId && 
+                    String(group.ownerId) === String(currentUser.userId);
 
   // Preparar acciones para el componente Card de manera segura
   const cardActions = [];
-  
-  // Acción para ver tareas (siempre disponible si hay un grupo válido con ID)
-  if (group && group._id) {
-    cardActions.push(
-      <Button 
-        key="view"
-        type="text" 
-        icon={<EyeOutlined />} 
-        onClick={() => onViewGroupTasks(group._id)}
-      >
-        Ver Tareas
-      </Button>
-    );
-  }
   
   // Acciones disponibles solo para el dueño del grupo
   if (isOwner && typeof onCreateGroupTask === 'function') {
