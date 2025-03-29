@@ -175,9 +175,6 @@ const AdminDashboardPage = () => {
               currentUserId={currentUserId}
             />
           </TabPane>
-          <TabPane tab="Estadísticas" key="stats">
-            <p>Aquí puedes implementar gráficos y estadísticas detalladas</p>
-          </TabPane>
         </Tabs>
       </>
     );
